@@ -64,6 +64,64 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
+
+  .light {
+    /* Cosmic Color System - Light Mode */
+    --space-navy: 234 75% 11%;
+    --nebula-purple: 271 61% 40%;
+    --starlight-gold: 43 50% 75%;
+    --cosmic-silver: 0 0% 69%;
+    --pure-white: 0 0% 100%;
+    --midnight-blue: 234 72% 10%;
+    --luxury-gold: 43 64% 52%;
+    --vibrant-purple: 262 83% 58%;
+    --ethereal-teal: 174 72% 40%;
+
+    /* Core Semantic Tokens - Light Mode */
+    --background: 0 0% 100%;
+    --foreground: 234 75% 11%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 234 75% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 234 75% 11%;
+
+    --primary: 43 64% 52%;
+    --primary-foreground: 234 75% 11%;
+
+    --secondary: 271 61% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 95%;
+    --muted-foreground: 234 50% 30%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 234 50% 85%;
+    --input: 234 50% 85%;
+    --ring: 43 64% 52%;
+
+    --radius: 0.75rem;
+
+    /* Cosmic Gradients - Light Mode */
+    --gradient-cosmic: linear-gradient(135deg, hsl(43 64% 52%), hsl(262 83% 58%));
+    --gradient-nebula: linear-gradient(180deg, hsl(262 83% 58%), hsl(271 61% 40%));
+    --gradient-starlight: linear-gradient(135deg, hsl(43 64% 52%), hsl(43 50% 75%));
+    
+    /* Shadows & Effects - Light Mode */
+    --shadow-cosmic: 0 10px 40px -10px hsl(43 64% 52% / 0.25);
+    --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.3);
+    --shadow-elegant: 0 20px 60px -15px hsl(234 75% 11% / 0.15);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
 }
 
 @layer base {
@@ -131,9 +189,12 @@ All colors MUST be HSL.
 
   .cosmic-gradient {
     background: var(--gradient-cosmic);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    color: transparent;
+    display: inline-block;
   }
 
   .hover-lift {

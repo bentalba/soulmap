@@ -2,8 +2,41 @@ import { Button } from './ui/button';
 import { NavLink } from './NavLink';
 import { Sparkles } from 'lucide-react';
 import heroImage from '@/assets/hero-cosmic.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useEffect, useState } from 'react';
+
+const AnimatedCounter = ({ target, suffix = '' }: { target: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const duration = 2000; // 2 seconds
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+
+    return () => clearInterval(timer);
+  }, [target]);
+
+  return (
+    <span className="text-3xl md:text-4xl font-bold text-primary animate-glow-pulse">
+      {count.toLocaleString()}{suffix}
+    </span>
+  );
+};
 
 export const Hero = () => {
+  const { t } = useLanguage();
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Image */}
@@ -26,21 +59,22 @@ export const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 border border-primary/20 backdrop-blur-sm">
             <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Trusted by 15,000+ souls worldwide</span>
+            <span className="text-sm text-muted-foreground">{t('hero.badge')}</span>
           </div>
 
           {/* Main Heading */}
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            Unveil the{' '}
-            <span className="cosmic-gradient">Universe</span>
+            {t('hero.title.1')}{' '}
+            <span className="cosmic-gradient inline-block animate-glow-pulse">
+              {t('hero.title.2')}
+            </span>
             <br />
-            Within You
+            {t('hero.title.3')}
           </h1>
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Discover your cosmic blueprint through personalized astrology readings by Yusra.
-            Your birth chart holds the secrets to your soul's journey.
+            {t('hero.subtitle')}
           </p>
 
           {/* CTA Buttons */}
@@ -50,7 +84,7 @@ export const Hero = () => {
                 size="lg" 
                 className="bg-gradient-cosmic hover:opacity-90 transition-opacity text-lg px-8 py-6 shadow-cosmic"
               >
-                Begin Your Celestial Reading
+                {t('hero.cta.primary')}
               </Button>
             </NavLink>
             <NavLink to="/services">
@@ -59,7 +93,7 @@ export const Hero = () => {
                 variant="outline" 
                 className="border-primary/30 hover:bg-primary/10 text-lg px-8 py-6"
               >
-                Explore Services
+                {t('hero.cta.secondary')}
               </Button>
             </NavLink>
           </div>
@@ -67,16 +101,16 @@ export const Hero = () => {
           {/* Trust Indicators */}
           <div className="grid grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto">
             <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold text-primary">2,400+</div>
-              <div className="text-sm text-muted-foreground">Readings Completed</div>
+              <AnimatedCounter target={2400} suffix="+" />
+              <div className="text-sm text-muted-foreground">{t('hero.metrics.readings')}</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold text-primary">98%</div>
-              <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
+              <AnimatedCounter target={98} suffix="%" />
+              <div className="text-sm text-muted-foreground">{t('hero.metrics.satisfaction')}</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold text-primary">15K+</div>
-              <div className="text-sm text-muted-foreground">Community Members</div>
+              <AnimatedCounter target={15} suffix="K+" />
+              <div className="text-sm text-muted-foreground">{t('hero.metrics.community')}</div>
             </div>
           </div>
         </div>

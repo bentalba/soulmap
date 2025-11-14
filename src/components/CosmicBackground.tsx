@@ -1,7 +1,11 @@
 import { useEffect, useRef } from 'react';
+import { SparklesCore } from './ui/sparkles-core';
+import { useTheme } from 'next-themes';
 
 export const CosmicBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme, resolvedTheme } = useTheme();
+  const currentTheme = resolvedTheme || theme || 'dark';
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -33,7 +37,11 @@ export const CosmicBackground = () => {
       particles.forEach(particle => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212, 175, 55, ${particle.opacity})`;
+        // Use different colors based on theme for better contrast
+        const particleColor = currentTheme === 'dark' 
+          ? `rgba(212, 175, 55, ${particle.opacity})` // Gold for dark mode
+          : `rgba(138, 100, 35, ${particle.opacity})`; // Darker gold for light mode
+        ctx.fillStyle = particleColor;
         ctx.fill();
 
         particle.x += particle.speedX;
@@ -62,13 +70,30 @@ export const CosmicBackground = () => {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [currentTheme]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.4 }}
-    />
+    <>
+      {/* Enhanced sparkles layer with tsparticles */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <SparklesCore
+          id="cosmic-sparkles"
+          background="transparent"
+          minSize={0.6}
+          maxSize={2}
+          particleDensity={120}
+          className="w-full h-full"
+          particleColor={currentTheme === 'dark' ? '#D4AF37' : '#8A6423'}
+          speed={0.8}
+        />
+      </div>
+      
+      {/* Original canvas particles for layered effect */}
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{ opacity: currentTheme === 'dark' ? 0.3 : 0.2 }}
+      />
+    </>
   );
 };

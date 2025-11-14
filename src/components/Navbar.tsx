@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { NavLink } from './NavLink';
 import { Button } from './ui/button';
+import { ThemeToggle } from './ThemeToggle';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Globe, Menu, X } from 'lucide-react';
 import {
   DropdownMenu,
@@ -11,12 +13,12 @@ import {
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState('EN');
+  const { language, setLanguage, t } = useLanguage();
 
   const languages = [
-    { code: 'EN', name: 'English' },
-    { code: 'AR', name: 'العربية' },
-    { code: 'FR', name: 'Français' },
+    { code: 'EN' as const, name: 'English' },
+    { code: 'AR' as const, name: 'العربية' },
+    { code: 'FR' as const, name: 'Français' },
   ];
 
   return (
@@ -37,25 +39,25 @@ export const Navbar = () => {
               className="text-muted-foreground hover:text-foreground transition-colors"
               activeClassName="text-primary font-semibold"
             >
-              Home
+              {t('nav.home')}
             </NavLink>
             <NavLink
               to="/services"
               className="text-muted-foreground hover:text-foreground transition-colors"
               activeClassName="text-primary font-semibold"
             >
-              Services
+              {t('nav.services')}
             </NavLink>
             <NavLink
               to="/about"
               className="text-muted-foreground hover:text-foreground transition-colors"
               activeClassName="text-primary font-semibold"
             >
-              About Yusra
+              {t('nav.about')}
             </NavLink>
             <NavLink to="/book">
               <Button className="bg-gradient-cosmic hover:opacity-90 transition-opacity">
-                Get Your Reading
+                {t('nav.book')}
               </Button>
             </NavLink>
             
@@ -79,6 +81,9 @@ export const Navbar = () => {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,27 +103,32 @@ export const Navbar = () => {
               className="text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Home
+              {t('nav.home')}
             </NavLink>
             <NavLink
               to="/services"
               className="text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              Services
+              {t('nav.services')}
             </NavLink>
             <NavLink
               to="/about"
               className="text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              About Yusra
+              {t('nav.about')}
             </NavLink>
             <NavLink to="/book" onClick={() => setIsOpen(false)}>
               <Button className="w-full bg-gradient-cosmic">
-                Get Your Reading
+                {t('nav.book')}
               </Button>
             </NavLink>
+            
+            {/* Mobile Theme Toggle */}
+            <div className="flex justify-center pt-2">
+              <ThemeToggle />
+            </div>
           </div>
         )}
       </div>
