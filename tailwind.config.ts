@@ -47,16 +47,23 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        cosmic: {
+          navy: "hsl(var(--space-navy))",
+          purple: "hsl(var(--nebula-purple))",
+          gold: "hsl(var(--starlight-gold))",
+          silver: "hsl(var(--cosmic-silver))",
+          teal: "hsl(var(--ethereal-teal))",
         },
+      },
+      backgroundImage: {
+        'gradient-cosmic': 'var(--gradient-cosmic)',
+        'gradient-nebula': 'var(--gradient-nebula)',
+        'gradient-starlight': 'var(--gradient-starlight)',
+      },
+      boxShadow: {
+        'cosmic': 'var(--shadow-cosmic)',
+        'glow': 'var(--shadow-glow)',
+        'elegant': 'var(--shadow-elegant)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +87,72 @@ export default {
             height: "0",
           },
         },
+        "stardust-float": {
+          "0%, 100%": {
+            transform: "translateY(0) translateX(0)",
+            opacity: "0.3",
+          },
+          "50%": {
+            transform: "translateY(-20px) translateX(10px)",
+            opacity: "0.8",
+          },
+        },
+        "constellation-draw": {
+          from: {
+            strokeDashoffset: "1000",
+          },
+          to: {
+            strokeDashoffset: "0",
+          },
+        },
+        "glow-pulse": {
+          "0%, 100%": {
+            opacity: "0.8",
+            filter: "brightness(1)",
+          },
+          "50%": {
+            opacity: "1",
+            filter: "brightness(1.2)",
+          },
+        },
+        "celestial-spin": {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: {
+            transform: "rotate(360deg)",
+          },
+        },
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "slide-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(40px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "stardust-float": "stardust-float 3s ease-in-out infinite",
+        "constellation-draw": "constellation-draw 2s ease-out forwards",
+        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "celestial-spin": "celestial-spin 60s linear infinite",
+        "fade-in": "fade-in 0.6s ease-out",
+        "slide-up": "slide-up 0.6s ease-out",
       },
     },
   },
