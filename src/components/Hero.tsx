@@ -4,7 +4,6 @@ import { Sparkles } from 'lucide-react';
 import heroImage from '@/assets/hero-cosmic.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useEffect, useState } from 'react';
-import GradientBlinds from './GradientBlinds';
 
 const AnimatedCounter = ({ target, suffix = '' }: { target: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
@@ -40,24 +39,6 @@ export const Hero = () => {
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* GradientBlinds Background Animation */}
-      <div className="absolute inset-0 z-0">
-        <GradientBlinds
-          gradientColors={['#D4AF37', '#9B4DCA', '#1a1a2e']}
-          angle={0}
-          noise={0.3}
-          blindCount={12}
-          blindMinWidth={50}
-          spotlightRadius={0.5}
-          spotlightSoftness={1}
-          spotlightOpacity={1}
-          mouseDampening={0.15}
-          distortAmount={0}
-          shineDirection="left"
-          mixBlendMode="lighten"
-        />
-      </div>
-      
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"

@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei';
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
@@ -10,6 +10,9 @@ import './Lanyard.css';
 // Import the 3D assets
 import cardGLB from '@/assets/lanyard/card.glb';
 import lanyardTexture from '@/assets/lanyard/lanyard.png';
+
+useGLTF.preload(cardGLB);
+useTexture.preload(lanyardTexture);
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
@@ -33,41 +36,43 @@ export default function Lanyard({
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
-        <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band />
-        </Physics>
-        <Environment blur={0.75}>
-          {/* Cosmic-themed lighting for the golden card */}
-          <Lightformer
-            intensity={2}
-            color="#D4AF37"
-            position={[0, -1, 5]}
-            rotation={[0, 0, Math.PI / 3]}
-            scale={[100, 0.1, 1]}
-          />
-          <Lightformer
-            intensity={3}
-            color="white"
-            position={[-1, -1, 1]}
-            rotation={[0, 0, Math.PI / 3]}
-            scale={[100, 0.1, 1]}
-          />
-          <Lightformer
-            intensity={3}
-            color="#9B4DCA"
-            position={[1, 1, 1]}
-            rotation={[0, 0, Math.PI / 3]}
-            scale={[100, 0.1, 1]}
-          />
-          <Lightformer
-            intensity={10}
-            color="white"
-            position={[-10, 0, 14]}
-            rotation={[0, Math.PI / 2, Math.PI / 3]}
-            scale={[100, 10, 1]}
-          />
-        </Environment>
+        <Suspense fallback={<ambientLight intensity={0.5} />}>
+          <ambientLight intensity={Math.PI} />
+          <Physics gravity={gravity} timeStep={1 / 60}>
+            <Band />
+          </Physics>
+          <Environment blur={0.75}>
+            {/* Cosmic-themed lighting for the golden card */}
+            <Lightformer
+              intensity={2}
+              color="#D4AF37"
+              position={[0, -1, 5]}
+              rotation={[0, 0, Math.PI / 3]}
+              scale={[100, 0.1, 1]}
+            />
+            <Lightformer
+              intensity={3}
+              color="white"
+              position={[-1, -1, 1]}
+              rotation={[0, 0, Math.PI / 3]}
+              scale={[100, 0.1, 1]}
+            />
+            <Lightformer
+              intensity={3}
+              color="#9B4DCA"
+              position={[1, 1, 1]}
+              rotation={[0, 0, Math.PI / 3]}
+              scale={[100, 0.1, 1]}
+            />
+            <Lightformer
+              intensity={10}
+              color="white"
+              position={[-10, 0, 14]}
+              rotation={[0, Math.PI / 2, Math.PI / 3]}
+              scale={[100, 10, 1]}
+            />
+          </Environment>
+        </Suspense>
       </Canvas>
     </div>
   );
