@@ -3,7 +3,7 @@ import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { ServicesSection } from '@/components/ServicesSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
-import { LanyardSection } from '@/components/LanyardSection';
+// import { LanyardSection } from '@/components/LanyardSection'; // Temporarily disabled - causing crashes
 import { Footer } from '@/components/Footer';
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <ServicesSection />
-      <LanyardSection />
+      {/* <LanyardSection /> */}
       <TestimonialsSection />
       <Footer />
     </div>
