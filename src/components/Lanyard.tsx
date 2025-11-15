@@ -7,10 +7,9 @@ import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import * as THREE from 'three';
 import './Lanyard.css';
 
-// TODO: Replace these with actual asset imports once files are added
-// For now, using placeholder paths - you'll need to add card.glb and lanyard.png to src/assets/lanyard/
-const cardGLB = '/placeholder-card.glb'; // Replace with: import cardGLB from '@/assets/lanyard/card.glb';
-const lanyardTexture = '/placeholder-lanyard.png'; // Replace with: import lanyardTexture from '@/assets/lanyard/lanyard.png';
+// Import the 3D assets
+import cardGLB from '@/assets/lanyard/card.glb';
+import lanyardTexture from '@/assets/lanyard/lanyard.png';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
