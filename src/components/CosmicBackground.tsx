@@ -75,8 +75,8 @@ export const CosmicBackground = () => {
 
   return (
     <>
-      {/* Gradient blinds hero layer (sits beneath sparkles/stars) */}
-      <div className="fixed top-0 left-0 w-full h-[600px] pointer-events-none -z-10">
+      {/* Gradient blinds hero layer (top strip, interactive) */}
+      <div className="fixed top-0 left-0 w-full h-[600px] z-0">
         <GradientBlinds
           gradientColors={['#FF9FFC', '#5227FF']}
           angle={0}
@@ -95,7 +95,7 @@ export const CosmicBackground = () => {
       </div>
 
       {/* Enhanced sparkles layer with tsparticles */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+      <div className="fixed inset-0 pointer-events-none z-10">
         <SparklesCore
           id="cosmic-sparkles"
           background="transparent"
