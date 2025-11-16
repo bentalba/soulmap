@@ -45,6 +45,9 @@ export const useLanguage = () => {
 
 const translations: Record<Language, Record<string, string>> = {
   EN: {
+    // Banner
+    'banner.delay': 'Due to high volume of orders your order may face some delays, as the readings are personalized and require time.',
+    
     // Navbar
     'nav.home': 'Home',
     'nav.services': 'Services',
@@ -154,6 +157,9 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.refund': 'Refund Policy',
   },
   FR: {
+    // Banner
+    'banner.delay': 'En raison du volume élevé de commandes, votre commande peut subir des retards, car les lectures sont personnalisées et nécessitent du temps.',
+    
     // Navbar
     'nav.home': 'Accueil',
     'nav.services': 'Services',
@@ -263,6 +269,9 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.refund': 'Politique de Remboursement',
   },
   AR: {
+    // Banner
+    'banner.delay': 'نظراً لكثرة الطلبات، قد يواجه طلبك بعض التأخير، حيث أن القراءات مخصصة وتحتاج إلى وقت.',
+    
     // Navbar
     'nav.home': 'الرئيسية',
     'nav.services': 'الخدمات',

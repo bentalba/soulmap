@@ -1,5 +1,6 @@
 import { CosmicBackground } from '@/components/CosmicBackground';
 import { Navbar } from '@/components/Navbar';
+import { DelayBanner } from '@/components/DelayBanner';
 import { ServicesSection } from '@/components/ServicesSection';
 import { Footer } from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -10,6 +11,7 @@ const Services = () => {
     <div className="min-h-screen relative">
       <CosmicBackground />
       <Navbar />
+      <DelayBanner />
       
       {/* Hero Section */}
       <section className="pt-32 pb-20 relative">

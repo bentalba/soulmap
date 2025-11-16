@@ -1,5 +1,6 @@
 import { CosmicBackground } from '@/components/CosmicBackground';
 import { Navbar } from '@/components/Navbar';
+import { DelayBanner } from '@/components/DelayBanner';
 import { Footer } from '@/components/Footer';
 import { BookingForm } from '@/components/BookingForm';
 import { Sparkles } from 'lucide-react';
@@ -9,6 +10,7 @@ const Book = () => {
     <div className="min-h-screen relative">
       <CosmicBackground />
       <Navbar />
+      <DelayBanner />
       
       {/* Header */}
       <section className="pt-32 pb-12 relative">
