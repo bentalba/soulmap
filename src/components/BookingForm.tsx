@@ -99,7 +99,7 @@ export const BookingForm = () => {
               key={s}
               className={cn(
                 "flex-1 h-2 rounded-full mx-1 transition-all",
-                s <= step ? "bg-gradient-cosmic" : "bg-muted"
+                s <= step ? "bg-primary" : "bg-muted"
               )}
             />
           ))}

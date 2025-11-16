@@ -56,7 +56,7 @@ const testimonials = [
 
 const TestimonialCard = ({ quote, name, location, rating }: typeof testimonials[0]) => (
   <Card className="w-[400px] h-[280px] flex-shrink-0 p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/30 transition-all hover-lift relative overflow-hidden group">
-    <div className="absolute inset-0 bg-gradient-cosmic opacity-0 group-hover:opacity-10 transition-opacity" />
+    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
     <div className="relative h-full flex flex-col justify-between">
       <div className="space-y-3">
         <Quote className="h-8 w-8 text-primary/30" />
@@ -71,8 +71,8 @@ const TestimonialCard = ({ quote, name, location, rating }: typeof testimonials[
           ))}
         </div>
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-cosmic flex items-center justify-center">
-            <span className="text-white text-sm font-semibold">{name.charAt(0)}</span>
+          <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+            <span className="text-primary text-sm font-semibold">{name.charAt(0)}</span>
           </div>
           <div>
             <div className="font-semibold text-sm">{name}</div>

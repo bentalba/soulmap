@@ -126,10 +126,10 @@ const About = () => {
             </div>
 
             {/* Philosophy */}
-            <div className="bg-gradient-cosmic rounded-lg p-8 text-center space-y-4">
-              <Star className="h-12 w-12 text-white mx-auto" />
-              <h3 className="text-2xl font-bold text-white">My Philosophy</h3>
-              <p className="text-white/90 max-w-2xl mx-auto leading-relaxed">
+            <div className="bg-primary/10 border border-primary/20 rounded-lg p-8 text-center space-y-4">
+              <Star className="h-12 w-12 text-primary mx-auto" />
+              <h3 className="text-2xl font-bold">My Philosophy</h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 I believe astrology is a tool for self-discovery and empowerment. By understanding 
                 the cosmic influences present at your birth, you gain clarity about your strengths, 
                 challenges, and life purpose. My readings combine scientific precision with intuitive 
@@ -212,7 +212,7 @@ const About = () => {
               {t('about.subtitle')}
             </p>
             <NavLink to="/book">
-              <Button size="lg" className="bg-gradient-cosmic hover:opacity-90 text-lg px-8 py-6">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
                 {t('about.cta')}
               </Button>
             </NavLink>

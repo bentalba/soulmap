@@ -25,7 +25,7 @@ const NotFound = () => {
             This page seems to have drifted into another dimension. Let's guide you back home.
           </p>
           <a href="/">
-            <Button size="lg" className="bg-gradient-cosmic hover:opacity-90 gap-2">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 gap-2">
               <HomeIcon className="h-5 w-5" />
               Return to Home
             </Button>

@@ -22,7 +22,7 @@ const Services = () => {
               Every soul has a unique cosmic blueprint. Let me guide you through the celestial wisdom written in your birth chart.
             </p>
             <NavLink to="/book">
-              <Button size="lg" className="bg-gradient-cosmic hover:opacity-90 mt-4">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 mt-4">
                 Book Your Reading Now
               </Button>
             </NavLink>

@@ -3,7 +3,6 @@ import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { ServicesSection } from '@/components/ServicesSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
-import { LanyardSection } from '@/components/LanyardSection';
 import { Footer } from '@/components/Footer';
 
 const Home = () => {
@@ -13,7 +12,6 @@ const Home = () => {
       <Navbar />
       <Hero />
       <ServicesSection />
-  <LanyardSection />
       <TestimonialsSection />
       <Footer />
     </div>

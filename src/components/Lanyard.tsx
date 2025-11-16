@@ -16,8 +16,12 @@ import './Lanyard.css';
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 // Preload assets to prevent crashes and improve loading experience
-useGLTF.preload(cardGLB);
-useTexture.preload(lanyard);
+try {
+  useGLTF.preload(cardGLB);
+  useTexture.preload(lanyard);
+} catch (error) {
+  console.error('Failed to preload assets:', error);
+}
 
 export default function Lanyard({ position = [0, 0, 30] as [number, number, number], gravity = [0, -40, 0] as [number, number, number], fov = 20, transparent = true }) {
   return (
@@ -27,7 +31,12 @@ export default function Lanyard({ position = [0, 0, 30] as [number, number, numb
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
-        <Suspense fallback={<ambientLight intensity={0.5} />}>
+        <Suspense fallback={
+          <mesh>
+            <boxGeometry args={[1, 1, 1]} />
+            <meshBasicMaterial color="#D4AF37" />
+          </mesh>
+        }>
           <ambientLight intensity={Math.PI} />
           <Physics gravity={gravity} timeStep={1 / 60}>
             <Band />
@@ -79,8 +88,22 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
     rot = new THREE.Vector3(),
     dir = new THREE.Vector3();
   const segmentProps = { type: 'dynamic' as const, canSleep: true, colliders: false as const, angularDamping: 4, linearDamping: 4 };
-  const { nodes, materials } = useGLTF(cardGLB) as any;
-  const texture = useTexture(lanyard);
+  
+  // Safely load assets with error handling
+  let nodes, materials, texture;
+  try {
+    const gltf = useGLTF(cardGLB) as any;
+    nodes = gltf.nodes;
+    materials = gltf.materials;
+    texture = useTexture(lanyard);
+  } catch (error) {
+    console.error('Failed to load Lanyard assets:', error);
+    return null;
+  }
+  
+  if (!nodes || !materials || !texture) {
+    return null;
+  }
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()])

@@ -56,7 +56,7 @@ export const Navbar = () => {
               {t('nav.about')}
             </NavLink>
             <NavLink to="/book">
-              <Button className="bg-gradient-cosmic hover:opacity-90 transition-opacity">
+              <Button className="bg-primary hover:bg-primary/90 transition-opacity">
                 {t('nav.book')}
               </Button>
             </NavLink>
@@ -120,7 +120,7 @@ export const Navbar = () => {
               {t('nav.about')}
             </NavLink>
             <NavLink to="/book" onClick={() => setIsOpen(false)}>
-              <Button className="w-full bg-gradient-cosmic">
+              <Button className="w-full bg-primary hover:bg-primary/90">
                 {t('nav.book')}
               </Button>
             </NavLink>

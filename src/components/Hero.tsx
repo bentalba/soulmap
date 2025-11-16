@@ -82,7 +82,7 @@ export const Hero = () => {
             <NavLink to="/book">
               <Button 
                 size="lg" 
-                className="bg-gradient-cosmic hover:opacity-90 transition-opacity text-lg px-8 py-6 shadow-cosmic"
+                className="bg-primary hover:bg-primary/90 transition-opacity text-lg px-8 py-6 shadow-cosmic"
               >
                 {t('hero.cta.primary')}
               </Button>

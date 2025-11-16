@@ -35,13 +35,13 @@ export const ServiceCard = ({
     <Card className="relative p-8 hover-lift border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden group">
       {/* Popular Badge */}
       {isPopular && (
-        <div className="absolute top-4 right-4 px-3 py-1 bg-gradient-cosmic rounded-full text-xs font-semibold animate-glow-pulse">
+        <div className="absolute top-4 right-4 px-3 py-1 bg-primary rounded-full text-xs font-semibold text-primary-foreground">
           {popularText}
         </div>
       )}
 
       {/* Glow Effect on Hover */}
-      <div className="absolute inset-0 bg-gradient-cosmic opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Icon */}
       <div className="relative mb-6">
