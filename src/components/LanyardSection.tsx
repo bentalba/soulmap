@@ -1,4 +1,5 @@
 import Lanyard from '@/components/Lanyard';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export const LanyardSection = () => {
   
@@ -17,12 +18,14 @@ export const LanyardSection = () => {
 
         {/* Lanyard Animation Container */}
         <div className="relative h-[600px] lg:h-[700px] rounded-2xl overflow-hidden border border-primary/20 bg-card/30 backdrop-blur-sm">
-          <Lanyard 
-            position={[0, 0, 30]} 
-            gravity={[0, -40, 0]} 
-            fov={20}
-            transparent={true}
-          />
+          <ErrorBoundary>
+            <Lanyard 
+              position={[0, 0, 30]} 
+              gravity={[0, -40, 0]} 
+              fov={20}
+              transparent={true}
+            />
+          </ErrorBoundary>
         </div>
 
         {/* Info Note */}

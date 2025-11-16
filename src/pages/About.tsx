@@ -4,10 +4,9 @@ import { Footer } from '@/components/Footer';
 import { Star, Heart, Globe, Sparkles, Anchor, GraduationCap, Award, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { NavLink } from '@/components/NavLink';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text, Box, Sphere } from '@react-three/drei';
-import { useTheme } from 'next-themes';
 import { useLanguage } from '@/contexts/LanguageContext';
+import Lanyard from '@/components/Lanyard';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 const About = () => {
   const { t } = useLanguage();
@@ -65,101 +64,9 @@ const About = () => {
 
             {/* Right Side - 3D Lanyard Animation */}
             <div className="relative h-[600px] lg:h-[700px]">
-              <Canvas
-                camera={{ position: [0, 0, 5], fov: 50 }}
-                style={{ background: 'transparent' }}
-              >
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} intensity={1} color="#D4AF37" />
-                <pointLight position={[-10, -10, -10]} intensity={0.5} color="#9B4DCA" />
-                
-                {/* ID Card */}
-                <group position={[0, 0, 0]} rotation={[0.2, 0.3, 0]}>
-                  {/* Card Background */}
-                  <Box args={[2.5, 3.5, 0.1]}>
-                    <meshStandardMaterial color="#1a1a2e" metalness={0.3} roughness={0.4} />
-                  </Box>
-                  
-                  {/* Gold Border */}
-                  <Box args={[2.6, 3.6, 0.05]} position={[0, 0, -0.06]}>
-                    <meshStandardMaterial color="#D4AF37" metalness={0.8} roughness={0.2} />
-                  </Box>
-                  
-                  {/* Photo Circle */}
-                  <Sphere args={[0.6, 32, 32]} position={[0, 1.2, 0.06]}>
-                    <meshStandardMaterial color="#9B4DCA" metalness={0.5} roughness={0.3} />
-                  </Sphere>
-                  
-                  {/* Text Labels */}
-                  <Text
-                    position={[0, 0.3, 0.06]}
-                    fontSize={0.25}
-                    color="#D4AF37"
-                    anchorX="center"
-                    anchorY="middle"
-                    font="/fonts/inter-bold.woff"
-                  >
-                    YUSRA
-                  </Text>
-                  
-                  <Text
-                    position={[0, -0.1, 0.06]}
-                    fontSize={0.15}
-                    color="#ffffff"
-                    anchorX="center"
-                    anchorY="middle"
-                  >
-                    Cosmic Navigator
-                  </Text>
-                  
-                  <Text
-                    position={[0, -0.5, 0.06]}
-                    fontSize={0.12}
-                    color="#9B4DCA"
-                    anchorX="center"
-                    anchorY="middle"
-                  >
-                    Maritime Navigation BSc
-                  </Text>
-                  
-                  <Text
-                    position={[0, -0.75, 0.06]}
-                    fontSize={0.12}
-                    color="#9B4DCA"
-                    anchorX="center"
-                    anchorY="middle"
-                  >
-                    Astrology MSc Candidate
-                  </Text>
-                  
-                  <Text
-                    position={[0, -1.2, 0.06]}
-                    fontSize={0.1}
-                    color="#888888"
-                    anchorX="center"
-                    anchorY="middle"
-                  >
-                    2,400+ Readings
-                  </Text>
-                  
-                  {/* Decorative Stars */}
-                  {[...Array(5)].map((_, i) => (
-                    <Sphere
-                      key={i}
-                      args={[0.05, 16, 16]}
-                      position={[
-                        Math.cos((i * Math.PI * 2) / 5) * 1.1,
-                        Math.sin((i * Math.PI * 2) / 5) * 1.5 - 0.2,
-                        0.08
-                      ]}
-                    >
-                      <meshStandardMaterial color="#D4AF37" emissive="#D4AF37" emissiveIntensity={0.5} />
-                    </Sphere>
-                  ))}
-                </group>
-                
-                <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={2} />
-              </Canvas>
+              <ErrorBoundary>
+                <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+              </ErrorBoundary>
             </div>
           </div>
         </div>
