@@ -16,4 +16,21 @@ export default defineConfig(({ mode }) => ({
     },
   },
   assetsInclude: ['**/*.glb'],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor code into separate chunks for better caching
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-popover'],
+          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei', '@react-three/rapier'],
+          'icons': ['lucide-react'],
+        },
+      },
+    },
+    // Optimize chunk size
+    chunkSizeWarningLimit: 1000,
+    // Use esbuild for minification (faster than terser and already included)
+    minify: 'esbuild',
+  },
 }));

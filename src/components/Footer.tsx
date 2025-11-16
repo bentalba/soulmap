@@ -10,7 +10,14 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 export const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  
+  // Determine the correct legal pages URLs based on language
+  const getLegalUrl = (page: string) => {
+    if (language === 'FR') return `/fr/${page}`;
+    if (language === 'AR') return `/ar/${page}`;
+    return `/${page}`;
+  };
   
   return (
     <footer className="border-t border-border bg-card/30 backdrop-blur-sm">
@@ -85,9 +92,9 @@ export const Footer = () => {
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>{t('footer.copyright')}</p>
           <div className="flex gap-6">
-            <NavLink to="/privacy" className="hover:text-primary transition-colors">{t('footer.privacy')}</NavLink>
-            <NavLink to="/terms" className="hover:text-primary transition-colors">{t('footer.terms')}</NavLink>
-            <NavLink to="/refund" className="hover:text-primary transition-colors">{t('footer.refund')}</NavLink>
+            <NavLink to={getLegalUrl('privacy')} className="hover:text-primary transition-colors">{t('footer.privacy')}</NavLink>
+            <NavLink to={getLegalUrl('terms')} className="hover:text-primary transition-colors">{t('footer.terms')}</NavLink>
+            <NavLink to={getLegalUrl('refund')} className="hover:text-primary transition-colors">{t('footer.refund')}</NavLink>
           </div>
         </div>
       </div>

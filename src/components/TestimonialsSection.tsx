@@ -12,15 +12,15 @@ const testimonials = [
   },
   {
     quote: "The reading was detailed and thoughtful. Yusra took time to answer my questions and didn't rush through anything. Worth every penny.",
-    name: "Ahmed K.",
-    location: "Dubai, UAE",
-    rating: 5,
+    name: "أحمد خالد",
+    location: "دبي، الإمارات",
+    rating: 4.5,
   },
   {
     quote: "Honestly, I was skeptical at first but decided to give it a try. The insights about my career path were surprisingly accurate. Still processing everything but it was helpful.",
     name: "Marie L.",
     location: "Paris, France",
-    rating: 5,
+    rating: 4.5,
   },
   {
     quote: "My partner and I got a compatibility reading. Some things resonated, others less so, but it opened up good conversations between us. Yusra was professional throughout.",
@@ -32,24 +32,24 @@ const testimonials = [
     quote: "Good reading overall. Yusra knows her stuff and explains the technical aspects well. Helped me see some things from a different angle.",
     name: "Carlos R.",
     location: "Barcelona, Spain",
-    rating: 5,
+    rating: 4.5,
   },
   {
     quote: "The birth chart analysis was thorough. Yusra explained planetary positions in a way that made sense. I'll probably book again in a few months to see how things progress.",
-    name: "Fatima A.",
-    location: "Cairo, Egypt",
+    name: "فاطمة أحمد",
+    location: "القاهرة، مصر",
     rating: 5,
   },
   {
     quote: "As someone new to astrology, I appreciated that Yusra didn't use too much jargon. She made it accessible without dumbing it down. Solid experience.",
     name: "Michael B.",
     location: "Toronto, Canada",
-    rating: 5,
+    rating: 4,
   },
   {
     quote: "The timing guidance was practical. Not just vague predictions but actual actionable insights. Yusra clearly has deep knowledge and experience.",
-    name: "Priya S.",
-    location: "Mumbai, India",
+    name: "ليلى محمد",
+    location: "الرياض، السعودية",
     rating: 5,
   },
 ];
@@ -66,9 +66,20 @@ const TestimonialCard = ({ quote, name, location, rating }: typeof testimonials[
       </div>
       <div className="space-y-2">
         <div className="flex gap-0.5">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className={`h-4 w-4 ${i < rating ? 'fill-primary text-primary' : 'fill-muted text-muted'}`} />
-          ))}
+          {[...Array(5)].map((_, i) => {
+            const isFullStar = i < Math.floor(rating);
+            const isHalfStar = i === Math.floor(rating) && rating % 1 !== 0;
+            return (
+              <div key={i} className="relative">
+                <Star className={`h-4 w-4 ${isFullStar ? 'fill-primary text-primary' : 'fill-muted text-muted'}`} />
+                {isHalfStar && (
+                  <div className="absolute inset-0 overflow-hidden" style={{ width: '50%' }}>
+                    <Star className="h-4 w-4 fill-primary text-primary" />
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">

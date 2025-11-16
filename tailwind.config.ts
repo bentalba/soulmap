@@ -159,6 +159,38 @@ export default {
             transform: "translateY(calc(-100% - var(--gap)))",
           },
         },
+        "float": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-20px)",
+          },
+        },
+        "float-delayed": {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-20px)",
+          },
+        },
+        "spin-slow": {
+          from: {
+            transform: "rotate(0deg)",
+          },
+          to: {
+            transform: "rotate(360deg)",
+          },
+        },
+        "spin-slower": {
+          from: {
+            transform: "rotate(360deg)",
+          },
+          to: {
+            transform: "rotate(0deg)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -171,6 +203,10 @@ export default {
         "slide-up": "slide-up 0.6s ease-out",
         "marquee": "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        "float": "float 3s ease-in-out infinite",
+        "float-delayed": "float-delayed 3s ease-in-out infinite 1.5s",
+        "spin-slow": "spin-slow 20s linear infinite",
+        "spin-slower": "spin-slower 30s linear infinite",
       },
     },
   },

@@ -11,6 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical assets for faster initial render -->
+    <link rel="modulepreload" href="/src/main.tsx" />
+    <link rel="preload" href="/src/assets/hero-cosmic.jpg" as="image" type="image/jpeg" fetchpriority="high" />
 
     <meta property="og:title" content="Soulmapy - Your Cosmic Blueprint Awaits" />
     <meta property="og:description" content="Unlock the mysteries of your birth chart with expert astrology readings by Yusra. Trusted by 15K+ souls." />

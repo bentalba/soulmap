@@ -19,8 +19,8 @@ export const CosmicBackground = () => {
 
     const particles: { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number }[] = [];
     
-    // Create stardust particles
-    for (let i = 0; i < 100; i++) {
+    // Create stardust particles - reduced from 100 to 50 for better performance
+    for (let i = 0; i < 50; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -81,7 +81,7 @@ export const CosmicBackground = () => {
           background="transparent"
           minSize={0.6}
           maxSize={2}
-          particleDensity={120}
+          particleDensity={60}
           className="w-full h-full"
           particleColor={currentTheme === 'dark' ? '#D4AF37' : '#8A6423'}
           speed={0.8}

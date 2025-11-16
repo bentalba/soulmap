@@ -15,6 +15,9 @@ import Refund from "./pages/Refund";
 import PrivacyFR from "./pages/PrivacyFR";
 import TermsFR from "./pages/TermsFR";
 import RefundFR from "./pages/RefundFR";
+import PrivacyAR from "./pages/PrivacyAR";
+import TermsAR from "./pages/TermsAR";
+import RefundAR from "./pages/RefundAR";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,9 @@ const App = () => (
               <Route path="/fr/privacy" element={<PrivacyFR />} />
               <Route path="/fr/terms" element={<TermsFR />} />
               <Route path="/fr/refund" element={<RefundFR />} />
+              <Route path="/ar/privacy" element={<PrivacyAR />} />
+              <Route path="/ar/terms" element={<TermsAR />} />
+              <Route path="/ar/refund" element={<RefundAR />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
