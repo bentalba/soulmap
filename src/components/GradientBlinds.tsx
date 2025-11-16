@@ -71,13 +71,14 @@ const GradientBlinds = ({
     const container = containerRef.current;
     if (!container) return;
 
-    const renderer = new Renderer({
-      dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
-      alpha: true,
-      antialias: true
-    });
-    rendererRef.current = renderer;
-    const gl = renderer.gl;
+    try {
+      const renderer = new Renderer({
+        dpr: dpr ?? (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
+        alpha: true,
+        antialias: true
+      });
+      rendererRef.current = renderer;
+      const gl = renderer.gl;
     const canvas = gl.canvas as HTMLCanvasElement;
 
     canvas.style.width = '100%';
@@ -334,6 +335,10 @@ void main() {
       meshRef.current = null;
       rendererRef.current = null;
     };
+    } catch (error) {
+      console.error('GradientBlinds WebGL initialization failed:', error);
+      // Silently fail - the error boundary will handle display
+    }
   }, [
     dpr,
     paused,
