@@ -1,5 +1,7 @@
-import Lanyard from '@/components/Lanyard';
+import { lazy, Suspense } from 'react';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+
+const Lanyard = lazy(() => import('@/components/Lanyard'));
 
 export const LanyardSection = () => {
   
@@ -19,12 +21,21 @@ export const LanyardSection = () => {
         {/* Lanyard Animation Container */}
         <div className="relative h-[600px] lg:h-[700px] rounded-2xl overflow-hidden border border-primary/20 bg-card/30 backdrop-blur-sm">
           <ErrorBoundary>
-            <Lanyard 
-              position={[0, 0, 30]} 
-              gravity={[0, -40, 0]} 
-              fov={20}
-              transparent={true}
-            />
+            <Suspense fallback={
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center space-y-4">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                  <p className="text-sm text-muted-foreground">Loading 3D experience...</p>
+                </div>
+              </div>
+            }>
+              <Lanyard 
+                position={[0, 0, 30]} 
+                gravity={[0, -40, 0]} 
+                fov={20}
+                transparent={true}
+              />
+            </Suspense>
           </ErrorBoundary>
         </div>
 

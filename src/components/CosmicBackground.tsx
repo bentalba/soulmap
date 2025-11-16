@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { SparklesCore } from './ui/sparkles-core';
 import { useTheme } from 'next-themes';
-import GradientBlinds from './GradientBlinds';
-import { ErrorBoundary } from './ErrorBoundary';
 
 export const CosmicBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -76,27 +74,6 @@ export const CosmicBackground = () => {
 
   return (
     <>
-      {/* Gradient blinds hero layer (top strip, interactive) */}
-      <div className="fixed top-0 left-0 w-full h-[600px] z-0">
-        <ErrorBoundary>
-          <GradientBlinds
-            gradientColors={['#FF9FFC', '#5227FF']}
-            angle={0}
-            noise={0.3}
-            blindCount={12}
-            blindMinWidth={50}
-            spotlightRadius={0.5}
-            spotlightSoftness={1}
-            spotlightOpacity={1}
-            mouseDampening={0.15}
-            distortAmount={0}
-            shineDirection="left"
-            mixBlendMode="lighten"
-          />
-        </ErrorBoundary>
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-transparent" />
-      </div>
-
       {/* Enhanced sparkles layer with tsparticles */}
       <div className="fixed inset-0 pointer-events-none z-10">
         <SparklesCore

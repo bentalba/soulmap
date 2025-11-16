@@ -5,8 +5,10 @@ import { Star, Heart, Globe, Sparkles, Anchor, GraduationCap, Award, BookOpen } 
 import { Button } from '@/components/ui/button';
 import { NavLink } from '@/components/NavLink';
 import { useLanguage } from '@/contexts/LanguageContext';
-import Lanyard from '@/components/Lanyard';
+import { lazy, Suspense } from 'react';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+
+const Lanyard = lazy(() => import('@/components/Lanyard'));
 
 const About = () => {
   const { t } = useLanguage();
@@ -65,7 +67,16 @@ const About = () => {
             {/* Right Side - 3D Lanyard Animation */}
             <div className="relative h-[600px] lg:h-[700px]">
               <ErrorBoundary>
-                <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+                <Suspense fallback={
+                  <div className="flex items-center justify-center h-full">
+                    <div className="text-center space-y-4">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+                      <p className="text-sm text-muted-foreground">Loading 3D experience...</p>
+                    </div>
+                  </div>
+                }>
+                  <Lanyard position={[0, 0, 20]} gravity={[0, -40, 0]} />
+                </Suspense>
               </ErrorBoundary>
             </div>
           </div>

@@ -88,8 +88,8 @@ export const TestimonialsSection = () => {
   const { t } = useLanguage();
   
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section className="py-20 relative overflow-hidden z-10">
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 space-y-4">
           <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-4">
             <span className="text-sm font-medium text-primary">{t('testimonials.badge')}</span>
@@ -101,7 +101,7 @@ export const TestimonialsSection = () => {
             {t('testimonials.subtitle')}
           </p>
         </div>
-        <div className="relative">
+        <div className="relative z-10">
           <Marquee pauseOnHover className="[--duration:60s] mb-4" ariaLabel="Customer testimonials">
             {testimonials.slice(0, 4).map((testimonial, index) => (
               <TestimonialCard key={index} {...testimonial} />
@@ -112,8 +112,8 @@ export const TestimonialsSection = () => {
               <TestimonialCard key={index} {...testimonial} />
             ))}
           </Marquee>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/12 bg-gradient-to-r from-background to-transparent z-20" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/12 bg-gradient-to-l from-background to-transparent z-20" />
         </div>
         <div className="mt-16 text-center space-y-4">
           <div className="flex justify-center items-center gap-2">
